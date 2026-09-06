@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-06
+
 ### Added
 
 - `/plainly prompt`, `/plainly prompt set <text>`, and `/plainly prompt reset`.
