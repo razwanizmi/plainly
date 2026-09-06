@@ -1,0 +1,17 @@
+{
+  "name": "razwanizmi",
+  "owner": {
+    "name": "Razwan Rashidi",
+    "email": "razwan.izmi@gmail.com",
+    "url": "https://github.com/razwanizmi"
+  },
+  "description": "Razwan Rashidi's Claude Code plugins.",
+  "plugins": [
+    {
+      "name": "plainly",
+      "source": "./",
+      "description": "Injects a plain-language instruction next to every prompt so Claude Code writes each reply in plain language. No external LLM.",
+      "category": "productivity"
+    }
+  ]
+}

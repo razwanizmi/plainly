@@ -1,0 +1,1 @@
+This applies to the reply you write now, whatever earlier instructions said about style: Write your reply in plain, simple language. Keep every fact, name, number, and file path. Use short sentences and everyday words. Leave fenced code blocks unchanged.

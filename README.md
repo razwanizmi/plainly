@@ -1,0 +1,79 @@
+# plainly
+
+A Claude Code plugin that makes Claude write **every reply in plain language**.
+One hook injects a short instruction into each prompt you send. The only setting is
+an on/off switch.
+
+Why use a hook and not an output style or a `CLAUDE.md` rule? Claude reads
+those once, at the start of the conversation. After a long session with lots of
+tool output, it stops following them. This hook runs on every prompt. So the
+instruction is always the last thing Claude has read.
+
+The hook never gets in the way. If something goes wrong, it does nothing. Your
+prompt reaches Claude just as you typed it.
+
+## Requirements
+
+- Claude Code.
+- `bash` and `jq`. `jq` comes with macOS 15 and later. On older macOS, run
+  `brew install jq`. On Linux, install it with your package manager.
+
+## Install
+
+Add this repository as a plugin marketplace. Then install the plugin from it:
+
+```bash
+claude plugin marketplace add https://github.com/razwanizmi/plainly
+claude plugin install plainly@razwanizmi
+```
+
+The first command downloads the repository for you. Later, `claude plugin
+update plainly` gets new versions, and `claude plugin uninstall plainly`
+removes the plugin.
+
+Want to try the plugin for one session without installing it? Clone or download
+this repository and start Claude Code with the directory loaded. Replace
+`PLUGIN_DIR` with the path to that directory. Nothing is left behind when the
+session ends:
+
+```bash
+claude --plugin-dir PLUGIN_DIR
+```
+
+## Use
+
+There is nothing to do. The instruction goes out with every prompt, in every
+session.
+
+To pause it, run `/plainly off` in Claude Code. To turn it back on, run
+`/plainly on`. `/plainly` on its own shows whether it is on or off. The change
+starts with your next prompt. You do not need to restart. The setting stays the
+way you set it across sessions until you change it. Nothing on screen shows the
+state, so run `/plainly` if you are not sure.
+
+The switch is an empty file named `off` in the plugin's data directory. For
+the install above, that is `~/.claude/plugins/data/plainly-razwanizmi/`.
+Uninstalling the plugin deletes that directory, so nothing is left behind.
+
+## The prompt
+
+This is the instruction the hook injects:
+
+```
+This applies to the reply you write now, whatever earlier instructions said
+about style: Write your reply in plain, simple language. Keep every fact,
+name, number, and file path. Use short sentences and everyday words. Leave
+fenced code blocks unchanged.
+```
+
+## Layout
+
+| File | Role |
+|---|---|
+| `prompt-inject.sh` | The hook. Runs on every prompt and returns the instruction. |
+| `prompt.md` | The instruction the hook injects. |
+| `plainly-ctl.sh` | Runs behind `/plainly`. Creates or removes the `off` file. |
+| `commands/plainly.md` | The `/plainly` command. |
+| `hooks/hooks.json` | Registers the hook with Claude Code. |
+| `.claude-plugin/plugin.json` | Plugin manifest. |
+| `.claude-plugin/marketplace.json` | Lets `claude plugin marketplace add` install from this directory. |

@@ -1,0 +1,19 @@
+{
+  "name": "plainly",
+  "description": "Injects a plain-language instruction next to every prompt you send, so Claude Code writes each reply in plain language and keeps doing so after fifty turns. One UserPromptSubmit hook, one prompt, no configuration, no external LLM.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Razwan Rashidi",
+    "email": "razwan.izmi@gmail.com",
+    "url": "https://github.com/razwanizmi"
+  },
+  "license": "MIT",
+  "keywords": [
+    "hooks",
+    "readability",
+    "plain-language",
+    "claude-code"
+  ],
+  "homepage": "https://github.com/razwanizmi/plainly#readme",
+  "repository": "https://github.com/razwanizmi/plainly"
+}
