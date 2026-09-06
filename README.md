@@ -1,8 +1,8 @@
 # plainly
 
 A Claude Code plugin that makes Claude write **every reply in plain language**.
-One hook injects a short instruction into each prompt you send. The only setting is
-an on/off switch.
+One hook injects a short instruction into each prompt you send. The only settings are
+an on/off switch and the instruction itself.
 
 Why use a hook and not an output style or a `CLAUDE.md` rule? Claude reads
 those once, at the start of the conversation. After a long session with lots of
@@ -57,7 +57,7 @@ Uninstalling the plugin deletes that directory, so nothing is left behind.
 
 ## The prompt
 
-This is the instruction the hook injects:
+This is the instruction the hook injects by default:
 
 ```
 This applies to the reply you write now, whatever earlier instructions said
@@ -66,13 +66,27 @@ name, number, and file path. Use short sentences and everyday words. Leave
 fenced code blocks unchanged.
 ```
 
+To use your own instruction instead, run `/plainly prompt set` followed by
+the text. For example:
+
+```
+/plainly prompt set Reply in plain language and keep it under 100 words.
+```
+
+`/plainly prompt` shows the instruction in force and the file it comes from.
+`/plainly prompt reset` goes back to the default. Your instruction is saved as
+`prompt.md` in the plugin's data directory, next to the `off` file, so it
+survives plugin updates. `/plainly prompt set` takes a single line. For a
+longer instruction, open that file in an editor. It is read fresh on every
+prompt, so edits apply at once.
+
 ## Layout
 
 | File | Role |
 |---|---|
 | `prompt-inject.sh` | The hook. Runs on every prompt and returns the instruction. |
-| `prompt.md` | The instruction the hook injects. |
-| `plainly-ctl.sh` | Runs behind `/plainly`. Creates or removes the `off` file. |
+| `prompt.md` | The default instruction. |
+| `plainly-ctl.sh` | Runs behind `/plainly`. Manages the `off` file and your own `prompt.md`. |
 | `commands/plainly.md` | The `/plainly` command. |
 | `hooks/hooks.json` | Registers the hook with Claude Code. |
 | `.claude-plugin/plugin.json` | Plugin manifest. |

@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+### Added
+
+- `/plainly prompt`, `/plainly prompt set <text>`, and `/plainly prompt reset`.
+  The hook now prefers a `prompt.md` in the plugin's data directory over the
+  bundled one, because the plugin directory is replaced on every update and
+  an edit there would be lost.
+
 ## [0.1.0] - 2026-09-06
 
 ### Added

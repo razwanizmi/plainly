@@ -10,13 +10,18 @@
 # the top and fade behind fifty turns of tool output. Nothing is rewritten:
 # Claude writes the reply itself in plain language.
 #
-# The instruction lives in prompt.md next to this script, so it can be edited
-# without touching shell. Its leading clause asserts precedence over style
+# The instruction is read from a file, never hard-coded here:
+#   ${CLAUDE_PLUGIN_DATA}/prompt.md   the user's own prompt, written by
+#                                     /plainly prompt set; wins when it exists
+#                                     and is not blank
+#   <plugin dir>/prompt.md            the bundled default
+# The user's copy lives in the data directory, not next to this script,
+# because the plugin directory is replaced on every update and an edit there
+# would be lost. The default's leading clause asserts precedence over style
 # rules higher in the context (an output style, a CLAUDE.md), which is the
 # case this plugin exists for; the price is that it also outranks a format
-# the user or a skill asked for on an earlier turn. A missing or empty
-# prompt.md means nothing is injected: there is no built-in copy, because
-# two copies drift.
+# the user or a skill asked for on an earlier turn. If neither file has any
+# text, nothing is injected.
 #
 # The only switch is /plainly on|off (plainly-ctl.sh), which
 # creates or removes a flag file this hook checks on every prompt. A flag
@@ -48,7 +53,13 @@ payload="$(cat)"
 [ -n "$payload" ] || exit 0
 printf '%s' "$payload" | jq -e . >/dev/null 2>&1 || exit 0
 
-PROMPT_FILE="$(cd "$(dirname "$0")" && pwd)/prompt.md"
+DATA_DIR="${CLAUDE_PLUGIN_DATA:-${HOME:-/tmp}/.claude/plugins/data/plainly}"
+PROMPT_FILE="$DATA_DIR/prompt.md"
+# A blank user prompt counts as absent, so a stray empty file cannot silence
+# the plugin; /plainly prompt reset removes it outright.
+if ! [ -r "$PROMPT_FILE" ] || ! grep -q '[^[:space:]]' "$PROMPT_FILE" 2>/dev/null; then
+  PROMPT_FILE="$(cd "$(dirname "$0")" && pwd)/prompt.md"
+fi
 [ -r "$PROMPT_FILE" ] || exit 0
 
 # --rawfile hands jq the file as one string, so no shell quoting can mangle it.
