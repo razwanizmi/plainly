@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+### Changed
+
+- The default instruction is now a short rule list: short sentences,
+  everyday words, no figurative language, one qualifier per claim, active
+  voice. It states that plain language changes how a finding is said, not
+  what was found, so no fact, number, table, or verdict is dropped.
+
 ## [0.2.1] - 2026-09-07
 
 ### Fixed
