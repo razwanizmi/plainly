@@ -55,6 +55,14 @@ The switch is an empty file named `off` in the plugin's data directory. For
 the install above, that is `~/.claude/plugins/data/plainly-razwanizmi/`.
 Uninstalling the plugin deletes that directory, so nothing is left behind.
 
+The hook makes the change, not the `/plainly` command itself. When Claude
+Code's Bash sandbox is on, the shell behind a slash command cannot write
+under `~/.claude`, but hooks run outside the sandbox. So `/plainly off`,
+`/plainly on`, `/plainly prompt set`, and `/plainly prompt reset` are applied
+by the hook as you send the command, and Claude relays the result. This works
+with the sandbox on or off. It needs `jq`; without it the command tells you
+so and shows a shell command you can run instead.
+
 ## The prompt
 
 This is the instruction the hook injects by default:
@@ -84,9 +92,9 @@ prompt, so edits apply at once.
 
 | File | Role |
 |---|---|
-| `prompt-inject.sh` | The hook. Runs on every prompt and returns the instruction. |
+| `prompt-inject.sh` | The hook. Runs on every prompt: applies `/plainly` changes, otherwise returns the instruction. |
 | `prompt.md` | The default instruction. |
-| `plainly-ctl.sh` | Runs behind `/plainly`. Manages the `off` file and your own `prompt.md`. |
+| `plainly-ctl.sh` | Manages the `off` file and your own `prompt.md`. The hook runs it to apply changes; `/plainly` runs it to show the state and the prompt. |
 | `commands/plainly.md` | The `/plainly` command. |
 | `hooks/hooks.json` | Registers the hook with Claude Code. |
 | `.claude-plugin/plugin.json` | Plugin manifest. |

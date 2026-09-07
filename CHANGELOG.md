@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+### Fixed
+
+- `/plainly on`, `/plainly off`, `/plainly prompt set`, and `/plainly prompt
+  reset` failed with `cannot create .../off` when Claude Code's Bash sandbox
+  was on. The sandbox runs a slash command's shell block inside the sandbox
+  and denies writes under `~/.claude`, which no `allowWrite` entry can lift.
+  The hook, which runs outside the sandbox, now applies these commands as
+  the prompt is submitted and reports the result; the command's shell block
+  only answers read-only requests. `plainly-ctl.sh` also reports the
+  operating system's reason when a file cannot be written.
+
 ## [0.2.0] - 2026-09-06
 
 ### Added
