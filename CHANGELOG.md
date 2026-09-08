@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-09-08
+
 ### Changed
 
 - The default instruction is shorter, 626 characters instead of 858. It
