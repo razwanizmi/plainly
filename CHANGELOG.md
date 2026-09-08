@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+### Changed
+
+- The default instruction is shorter, 626 characters instead of 858. It
+  drops three phrases that repeated other rules and folds the "no fact,
+  number, table, or verdict is dropped" sentence into the rule list. The
+  rules themselves are unchanged.
+
 ## [0.3.0] - 2026-09-07
 
 ### Changed
