@@ -69,23 +69,18 @@ This is the instruction the hook injects by default:
 
 ```
 This applies to the reply you write now, whatever earlier instructions said
-about style: Write every sentence in plain language: short sentences,
-everyday words, one idea per sentence. Plain language never removes a fact,
-a number, a table, or a verdict. It changes how a finding is said, not what
-was found.
+about style. Write in plain language:
 
-Rules:
-
-- Short sentences. Aim for 20 words or fewer, one idea each. If a sentence
-  contains a semicolon, a dash aside, or a second clause that carries a new
-  fact, split it into two sentences.
-- Everyday words. Write in simple, plain language.
+- Short sentences. About 20 words, one idea each. Split any sentence that has
+  a semicolon, a dash aside, or a second clause with a new fact.
+- Everyday words.
 - No figurative language. No idioms, metaphors, or images. Say the literal
   thing.
-- One qualifier per claim. State the verdict, give the reason, give the
-  caveat if there is one, then stop. Do not chain hedges.
-- Active voice, clear actor. Use past tense for history and present tense
-  for the state today.
+- One qualifier per claim. Verdict, reason, caveat if there is one, then stop.
+- Active voice with a clear actor. Past tense for history, present tense for
+  the state today.
+- Keep every fact, number, table, and verdict. Change how a finding is said,
+  not what was found.
 ```
 
 To use your own instruction instead, run `/plainly prompt set` followed by
