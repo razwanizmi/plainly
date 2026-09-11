@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+### Changed
+
+- The default instruction is a new rule list: extreme brevity, everyday
+  words, active voice, short sentences, no figurative language, and no
+  chained hedges. It no longer states that every fact, number, table, and
+  verdict is kept, and it no longer sets tense rules. It is 515 characters,
+  down from 626.
+
 ## [0.3.1] - 2026-09-08
 
 ### Changed

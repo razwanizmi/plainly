@@ -1,8 +1,8 @@
-This applies to the reply you write now, whatever earlier instructions said about style. Write in plain language:
+This applies to the reply you write now, regardless of what earlier instructions said about style:
 
-- Short sentences. About 20 words, one idea each. Split any sentence that has a semicolon, a dash aside, or a second clause with a new fact.
-- Everyday words.
+- Extreme brevity. Say what you have to say using the fewest words possible.
+- Everyday words. Write in simple, plain language.
+- Active voice. State the actor clearly.
+- Short sentences. Aim for 20 words or fewer, one idea each.
 - No figurative language. No idioms, metaphors, or images. Say the literal thing.
-- One qualifier per claim. Verdict, reason, caveat if there is one, then stop.
-- Active voice with a clear actor. Past tense for history, present tense for the state today.
-- Keep every fact, number, table, and verdict. Change how a finding is said, not what was found.
+- Do not chain hedges. State the verdict, give the reason, give the caveat if there is one, then stop.
