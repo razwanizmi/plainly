@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/) at `0.x`.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-11
+
 ### Changed
 
 - The default instruction is a new rule list: extreme brevity, everyday
